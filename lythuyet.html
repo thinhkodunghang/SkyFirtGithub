@@ -1,0 +1,312 @@
+1, alert(content): thông báo nổi
+2, var(variable) tên biến, ví dụ var name ="content";
+3, confirm: thông báo xác nhận
+4, prompt: thông báo có thể nhập nội dung
+5, setTimeout: hiện thông báo sau 1 time
+ví dụ setTimeout(function() {
+    statement
+},time=mili giây(1000mili=1s))
+
+6, setInterval: hiện thông báo sau 1 time, và lập lại sau 1s liên tục
+ví dụ setInterval(function() {
+    statement
+},time=mili giây(1000mili=1s))
+
+
+________
+7, object
+ví dụ var name = {
+    abc: "hihhi",
+    ...
+};
+* để add thêm 1 key sau khi object đc tạo thì:
+ name.keynew ="blabla";
+-or-
+ name["cach dat ten- không bị vi phạm quy tắc"]="dục tốc bất đạt";
+muốn lấy value thì name.keymuonlay
+** ví dụ**
+var myInfo ={
+    age:18,
+    address:"viet nam",
+}
+var myKey = "address";
++ Nếu muốn lấy value "viet nam" thông qua myInfo thì:
+ myInfo[address]
++ Nếu muốn thêm 1 key new là "hihi" trong myInfo thì:
+ví dụ thêm 
+var conc="hihi";
+thì
+var myInfo ={
+    age:18,
+    address:"viet nam",
+    [conc]="ko đc cuoi" 
+}
+________
+8, object constructor: xay dung bo khung
+ vd:
+ function User(firstName, lastName, avatar) {
+    this.firstName= firstName;
+    this.lastName= lastName;
+    this.avatar= avatar;
+ }
++ cách sử dụng:
+var author= new User("thinh","nguyen dang quoc","you so handsome ")
+
+9, number làm tròn số: name.Fixed(số muốn làm tròn sau dấu phẩy)
+
+10, các loại function
+
+- declaration function:
+ví dụ: function name(){
+
+}
+- expression function:
+ví dụ 1: var name = function(){
+
+}
+ví dụ 2: name(function(){
+
+});
+ví dụ 3: var myObject ={
+    myFunction: function() {
+
+    }
+}
+
+11, date: var date =new Date();
+var year =date.getFullYear();
+
+12, loop: vòng lập for
+ví dụ 
+
+-loại 1: for/in:
+ với object: 
+
+var myInfo = {
+    name:"thinh",
+    age:17,
+    address:"da nang"
+};
+for(var key in myInfo){
+    console.log(key);
+}
+==> cout: name,age,..
++if muốn in ra value thì: console.log(myInfo[key]);
+
+for/in với array:
+var languages = [
+    'javascript',
+    'PHP',
+    'Ruby',
+    'Java'
+]
+
+for( var key in languages){
+    console.log(key);
+}
+cout: ra dãy số index
++ if muốn in value: console.log(languages[key]);
+
+*** loại 2: for/of: in ra cac value,...
++ với array
+var languages = [
+    'javascript',
+    'PHP',
+    'java'
+];
+
+for( var value of languages) {
+    console.log(value);
+}
+cout ra: các value trong array languages
+
++ với object:
+
+ var myInfo={
+    name: 'thinh',
+    age:20
+ };
+A=Object.keys(myInfo):để in ra key
+A=Object.values(myInfo):để in ra value
+for(var value of A){
+    console.log(value);
+}
+13, Array: chứa all các kiểu dữ liệu
+ví dụ
+ var name=[
+    a,
+    b,
+    c
+ ];
+
+***các attribute***
+   name.toString(): Chuyển một mảng về dạng chuỗi ký tự.
+   name.join(...):thay or thêm ndung vào
+   name.pop():xoa elenmet cuối mảng và return về elenmet đã delete
+   name.push("..."): add 1 or nhiều hơn các elenmet vào cuối array
+   name.shift():xoa elenmet đầu mảng và return về elenmet đã delete
+   name.unshift():add 1 or nhiều hơn các elenmet đầu mảng và return về elenmet đã add
+   name.splice(chọn position elenmet start, quantily(số lượng) muốn xóa, add elenmet)
+   name.concat(name1): dùng để nối 2 mảng lại với nhau
+mảng name gọi đến concat là mảng gốc và mảng name1 là mảng đc hợp nhất với mảng gốc
+   name.slice(start:number,end:number):dùng để cắt và return ra các value
+muốn copy array thì thay number=0
+14, array methods
++ ví dụ:
+var courses =[
+    {
+        id:1,
+        name:'javascript',
+        coin: 250
+    },
+    {
+        id:2,
+        name:'java',
+        coin: 0
+    }
+    {
+        id:3,
+        name:'PHP',
+        coin: 250
+    }
+];
+
+- voi method: forEach(): duyet danh sach
+
+courses.forEach(function(course,index) {
+    console.log(index,course)
+});
+
+- voi method: every(): ktr all co thoa man 1 dkien nao do ko
+
+var isFree = courses.evely(function(course,index) {
+    return course.coin === 0;
+});
+
+console.log(isFree);
+
+- voi method: some(): check 1 em co ngon hay ko
+
+var isFree = courses.some(function(course,index) {
+    return course.coin===0;
+});
+
+console.log(isFree);
+
++ voi method: find(): tim 1 thu minh muon va no in 1 value
+
+var timkiem = courses.find(function(course,index) {
+    return course.id == 1;
+});
+
+console.log(timkiem);
+
++ voi method: filter(): tim 1 thu minh muon va in ra all value can tim
+var list = courses.filter(function(course,index) {
+    return course.id == 1;
+});
+
+console.log(list);
+
++ voi method:map():sử dụng để tạo một mảng mới bằng cách
+ thực hiện một phép biến đổi trên từng phần tử của mảng gốc. 
+Nó trả về một mảng mới chứa các phần tử đã được biến đổi.
+
+function courseHandler(course){
+    return {
+        id: course.id,
+        name: `khoa hoc: ${course.name}`,
+        coin: course.coin,
+        coinText:`Gia: ${course.coin}`
+    }
+};
+
+var newCourses = courses.map(courseHandler);
+ console.log(courseHandler); 
+
+ + voi method: reduce(): sử dụng để thực thi một hàm lên các phần tử
+của mảng (từ trái sang phải) với một biến tích lũy
+để thu về một giá trị duy nhất.
+
+- ví dụ 
+accumulator: bộ nhớ đệm
+curren: hiện tại
+originArray: cùng bộ nhớ với courses
+
+var i=0;
+function coinHandler(accumulator,currentValue,currentIndex,originArray) {
+    i++;
+    var totalCoin= accumulator + currentValue.coin;
+    console.table ({
+        'Lượt chạy':i,
+        'Bien tich tru':accumulator,
+        'Giá khóa hoc':currentValue.coin,
+        'tich tru duoc':totalCoin,
+    });
+    return totalCoin;
+}
+
+var totalCoin = courses.reduce(coimHandler,0);
+console.log(totalCoin);
+
+-- ví dụ 2:
+// lay ra ca khoa hoc dua vao 1 mang moi
+
+ var topics =[
+    {
+        topic:"front-end",
+        courses: [
+            {
+                id:1,
+                title:"HTML,CSS"
+            },
+            {
+                id:2,
+                title:"Javascript"
+            }
+        ]
+    },
+    {
+        topic:"back-end",
+        courses: [
+            {
+                id:1,
+                title:"PHP"
+            },
+            {
+                id:2,
+                title:"NodeJs"
+            }
+        ]
+    },
+
+];
+
+var newCourses = topics.reduce(function(course,element) {
+    return course.concat(element.courses);
+},[]);
+console.log(newCourses);
+
+
+15, includes() method trong array/string: dùng để check xem
+cái elenmet mình muốn tìm có trong String or Array ko
+- ví dụ:
+var courses = ['Javascript','PHP','Dart'];
+
+console.log(courses.include('PHP'));
+cout:true nếu có or reverse
+
+16, Math object:
+- Math.PI:số PI
+- Math.abs(..):giá trị tuyệt đối(- thành dương và dương thành âm)
+- Math.round(..): làm tròn số
+- Math.ceil(..):làm tròn lên
+- Math.floor(..):làm tròn dưới
+- Math.random():random 1 số thập phân nhỏ hơn 1
+ví dụ Math.random()*number
+number là số giới hạn muốn random
+
+17, HTML DOM(tiêu chuẩn W3C): document object model
+ trong đó cso element,atttribute,text.
+ và nó là 1 quy chuẩn
+ nó biểu diễn dưới dạng cây
